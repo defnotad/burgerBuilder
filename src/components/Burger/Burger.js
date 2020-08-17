@@ -4,11 +4,15 @@ import BurgerIngredient from "./BurgerIngredients/BurgerIngredients";
 import classes from "./Burger.module.css";
 
 const burger = (props) => {
-    const transformedIngredients = [];
+    let transformedIngredients = [];
     for (let key in props.ingredients) {
         for (let j = 0; j < props.ingredients[key]; j++) {
             transformedIngredients.push(<BurgerIngredient key={key + j} type={key} />);
         }
+    }
+
+    if (transformedIngredients.length === 0) {
+        transformedIngredients = <p>Start adding some ingredients!</p>;
     }
 
     return (
